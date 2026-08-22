@@ -1,0 +1,43 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# Storybook Lab
+
+A small component playground for exploring Storybook's features hands-on —
+no production app constraints, just enough surface area to try things out.
+
+## What each component demonstrates
+
+| Component    | Feature focus                                                      |
+| ------------ | ------------------------------------------------------------------ |
+| `Button`     | Args as controls, the actions addon, autodocs                      |
+| `TextField`  | Interaction testing with `play` functions                          |
+| `ThemedCard` | A custom global (toolbar) control driving theming                  |
+| `Modal`      | Portal-rendered content, the Viewport addon, focus/Escape behavior |
+| `DataTable`  | The `loaders` API for async data, loading/empty states             |
+| `Toast`      | CSS keyframe animation, accessible live regions                    |
+
+## Where to look
+
+- **Controls / Actions / Backgrounds / Viewport** panels — all built into
+  Storybook core as of v8+, no extra addons needed.
+- **Accessibility** panel (`@storybook/addon-a11y`) — flags violations on
+  every story; configured to `test: "todo"` in `.storybook/preview.tsx`
+  (change to `"error"` to fail CI on violations).
+- **Interactions** panel — step through the `play` functions in
+  `TextField.stories.tsx` and `Modal.stories.tsx`.
+- **Vitest addon** (`@storybook/addon-vitest`) — every story doubles as a
+  Vitest test; run `yarn test` or check the Testing sidebar in your editor.
+- This MDX page itself — a hand-authored docs page, versus the
+  `tags: ["autodocs"]` pages generated from JSDoc + `argTypes` on every
+  other component.
+
+## Commands
+
+```bash
+yarn storybook          # Storybook dev server → http://localhost:6006
+yarn build-storybook    # static build → storybook-static/
+yarn dev                # the (minimal) host app → http://localhost:3160
+yarn test               # Vitest, including stories via the Vitest addon
+```

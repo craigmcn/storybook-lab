@@ -1,0 +1,35 @@
+.themed-card {
+  --card-bg: #ffffff;
+  --card-border: #e4e7ec;
+  --card-text: #101828;
+  --card-muted: #667085;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  width: 18rem;
+  color: var(--card-text);
+  font-family: inherit;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+[data-theme="dark"] .themed-card {
+  --card-bg: #1d2939;
+  --card-border: #344054;
+  --card-text: #f2f4f7;
+  --card-muted: #98a2b3;
+}
+
+.themed-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.themed-card__body {
+  color: var(--card-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
