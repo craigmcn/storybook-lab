@@ -1,4 +1,5 @@
 import type { Decorator, Preview } from "@storybook/react-vite";
+import "../src/index.css";
 
 /**
  * Global theme toggle: adds `data-theme="light" | "dark"` to a wrapper div
