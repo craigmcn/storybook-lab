@@ -54,11 +54,19 @@ yarn format:check    # Prettier check
   `autodocs`-generated pages on every component), rendered as the
   Storybook sidebar's "Introduction" entry. Update it if the component set
   changes.
-- **Theming**: only `ThemedCard` has a manual light/dark toggle (via the
+- **Theming**: `ThemedCard` has a manual light/dark toggle (via the
   toolbar global, not `prefers-color-scheme` — deliberately, to
-  demonstrate `globalTypes` + decorators rather than duplicate the
-  `prefers-color-scheme` pattern already covering the CSS-only approach
-  used elsewhere in `~/Web/` repos).
+  demonstrate `globalTypes` + decorators). Every other component follows
+  the OS via `prefers-color-scheme`, the CSS-only approach used elsewhere
+  in `~/Web/` repos: `src/index.css` defines semantic tokens (`--surface`,
+  `--surface-hover`, `--border`, `--border-strong`, `--text`,
+  `--text-muted`) on `:root` in terms of the `--color-neutral-*` scale,
+  then redefines just those tokens under `@media (prefers-color-scheme:
+dark)`. Component CSS reads the semantic tokens, not the raw scale, so
+  the dark swap happens in one place. `ThemedCard`'s own `--card-*`
+  variables read the raw `--color-neutral-*` scale directly instead —
+  kept deliberately separate so its `data-theme` toggle stays independent
+  of the OS preference.
 - **Vitest addon**: `@storybook/addon-vitest` runs every `.stories.tsx`
   file as a Vitest test (via `vite.config.ts`'s `test.projects` — a
   `unit` project for `*.test.tsx` and a `storybook` project, backed by a

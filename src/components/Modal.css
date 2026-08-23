@@ -10,7 +10,8 @@
 }
 
 .modal {
-  background: var(--color-neutral-0);
+  background: var(--surface);
+  color: var(--text);
   border-radius: 0.5rem;
   width: min(24rem, 100%);
   max-height: 90vh;
@@ -23,7 +24,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--color-neutral-200);
+  border-bottom: 1px solid var(--border);
 }
 
 .modal__header h2 {
@@ -37,12 +38,12 @@
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
-  color: var(--color-neutral-500);
+  color: var(--text-muted);
   padding: 0.25rem;
 }
 
 .modal__body {
   padding: 1.25rem;
   font-size: 0.9375rem;
-  color: var(--color-neutral-700);
+  color: var(--text);
 }

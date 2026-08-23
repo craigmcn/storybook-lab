@@ -23,13 +23,41 @@
   --color-neutral-300: #cbd5e1;
   --color-neutral-400: #94a3b8;
   --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
   --color-neutral-700: #334155;
   --color-neutral-800: #1e293b;
   --color-neutral-900: #0f172a;
+
+  /*
+   * Semantic surface/text/border tokens — what components actually consume,
+   * so a dark-mode swap only has to happen in one place below. Kept separate
+   * from the raw --color-neutral-* scale (rather than redefining it directly)
+   * because ThemedCard's `data-theme` toggle reads that scale for its own,
+   * independent light/dark demo and must not shift with the OS preference.
+   */
+  --surface: var(--color-neutral-0);
+  --surface-hover: var(--color-neutral-100);
+  --border: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
+  --text: var(--color-neutral-700);
+  --text-muted: var(--color-neutral-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: var(--color-neutral-800);
+    --surface-hover: var(--color-neutral-700);
+    --border: var(--color-neutral-700);
+    --border-strong: var(--color-neutral-600);
+    --text: var(--color-neutral-100);
+    --text-muted: var(--color-neutral-400);
+  }
 }
 
 body {
   margin: 0;
+  background: var(--surface);
+  color: var(--text);
 }
 
 #app {
