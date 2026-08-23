@@ -54,6 +54,37 @@
   }
 }
 
+/*
+ * An explicit `data-theme` (e.g. Storybook's "Theme" toolbar global, wired
+ * up in .storybook/preview.tsx) overrides the OS preference above for
+ * everything inside it — not just ThemedCard, which reads the raw
+ * --color-neutral-* scale separately for its own demo of consuming a
+ * global directly. Custom properties set here win over the inherited
+ * :root/media-query values for any descendant, regardless of the OS theme.
+ */
+[data-theme="light"] {
+  --surface: var(--color-neutral-0);
+  --surface-hover: var(--color-neutral-100);
+  --border: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
+  --text: var(--color-neutral-700);
+  --text-muted: var(--color-neutral-500);
+}
+
+[data-theme="dark"] {
+  --surface: var(--color-neutral-800);
+  --surface-hover: var(--color-neutral-700);
+  --border: var(--color-neutral-700);
+  --border-strong: var(--color-neutral-600);
+  --text: var(--color-neutral-100);
+  --text-muted: var(--color-neutral-400);
+}
+
+[data-theme] {
+  background: var(--surface);
+  color: var(--text);
+}
+
 body {
   margin: 0;
   background: var(--surface);

@@ -3,8 +3,13 @@ import "../src/index.css";
 
 /**
  * Global theme toggle: adds `data-theme="light" | "dark"` to a wrapper div
- * around every story, driven by a toolbar control. `ThemedCard` is the
- * component built to respond to it — see `src/components/ThemedCard.css`.
+ * around every story, driven by a toolbar control. `src/index.css` reads
+ * that attribute to override every component's semantic tokens
+ * (--surface, --text, etc.), so this overrides prefers-color-scheme for
+ * everything in the canvas. `ThemedCard` additionally reads the raw
+ * --color-neutral-* scale directly off the same attribute, as a
+ * self-contained demo of a component consuming a custom global — see
+ * `src/components/ThemedCard.css`.
  */
 const withTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme ?? "light";
@@ -41,7 +46,7 @@ const preview: Preview = {
 
   globalTypes: {
     theme: {
-      description: "Global theme for components that read data-theme",
+      description: "Global light/dark theme for the whole canvas",
       toolbar: {
         title: "Theme",
         icon: "paintbrush",
