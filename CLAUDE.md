@@ -77,12 +77,10 @@ yarn format:check    # Prettier check
 - Uses `.node-version` (not `.nvmrc`) — the toolchain standard is `mise`.
 - No Font Awesome / external CSS framework — this repo doesn't have a UI
   worth theming beyond the components themselves.
-- **Typeface & palette**: `Inter` is loaded via Google Fonts (linked in
-  both `index.html` and `.storybook/preview-head.html`, so the host app
-  and Storybook canvas match), with a `ui-sans-serif`/`system-ui` fallback
-  stack set on `:root` in `src/index.css`. Color tokens (`--color-primary`,
-  `--color-success`, `--color-danger`, and a `--color-neutral-*` slate
-  scale) are also defined on `:root` there; every component CSS file reads
-  from these instead of hardcoding hex values, including `ThemedCard`'s
-  local `--card-*` custom properties, which alias the neutral scale for
-  its light/dark variants.
+- **Typeface & palette**: the base font is the `system-ui` stack (no
+  webfont load) set on `:root` in `src/index.css`. Color tokens
+  (`--color-primary`, `--color-success`, `--color-danger`, and a
+  `--color-neutral-*` slate scale) are also defined on `:root` there;
+  every component CSS file reads from these instead of hardcoding hex
+  values, including `ThemedCard`'s local `--card-*` custom properties,
+  which alias the neutral scale for its light/dark variants.
