@@ -65,12 +65,24 @@ yarn format:check    # Prettier check
   real Chromium instance through `@vitest/browser-playwright`, for the
   stories). `yarn test` runs both projects.
 - `vite.config.ts` is largely Storybook-init-generated boilerplate
-  (including the `__dirname` fallback and `test.projects` split) —
-  left as generated rather than hand-simplified, so future
-  `storybook upgrade` runs diff cleanly against it.
+  (including the `test.projects` split) — left as generated rather
+  than hand-simplified, so future `storybook upgrade` runs diff
+  cleanly against it. The one deviation: `dirname` uses
+  `import.meta.dirname` instead of the generated `__dirname`
+  fallback, since Storybook's native Vite config loader warns on
+  `__dirname` usage (`configLoader: 'native'`).
 
 ## Notes
 
 - Uses `.node-version` (not `.nvmrc`) — the toolchain standard is `mise`.
 - No Font Awesome / external CSS framework — this repo doesn't have a UI
   worth theming beyond the components themselves.
+- **Typeface & palette**: `Inter` is loaded via Google Fonts (linked in
+  both `index.html` and `.storybook/preview-head.html`, so the host app
+  and Storybook canvas match), with a `ui-sans-serif`/`system-ui` fallback
+  stack set on `:root` in `src/index.css`. Color tokens (`--color-primary`,
+  `--color-success`, `--color-danger`, and a `--color-neutral-*` slate
+  scale) are also defined on `:root` there; every component CSS file reads
+  from these instead of hardcoding hex values, including `ThemedCard`'s
+  local `--card-*` custom properties, which alias the neutral scale for
+  its light/dark variants.

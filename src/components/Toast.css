@@ -24,7 +24,7 @@
   border-radius: 0.375rem;
   font-family: inherit;
   font-size: 0.875rem;
-  color: #fff;
+  color: var(--color-neutral-0);
 }
 
 .toast--in {
@@ -36,13 +36,13 @@
 }
 
 .toast--info {
-  background: #2f6fed;
+  background: var(--color-primary);
 }
 
 .toast--success {
-  background: #12b76a;
+  background: var(--color-success);
 }
 
 .toast--error {
-  background: #d92d20;
+  background: var(--color-danger);
 }
