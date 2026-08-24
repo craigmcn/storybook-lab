@@ -55,19 +55,23 @@ yarn format:check    # Prettier check
   Storybook sidebar's "Introduction" entry. Update it if the component set
   changes.
 - **Theming**: `src/index.css` defines semantic tokens (`--surface`,
-  `--surface-hover`, `--border`, `--border-strong`, `--text`,
-  `--text-muted`) on `:root` in terms of the `--color-neutral-*` scale.
-  Every component reads the semantic tokens, not the raw scale, so a
-  dark-mode swap only has to happen in one place. Two things can trigger
+  `--surface-hover`, `--border`, `--border-subtle`, `--border-strong`,
+  `--text`, `--text-muted`) on `:root` in terms of the `--color-neutral-*`
+  scale. Every component reads the semantic tokens, not the raw scale, so
+  a dark-mode swap only has to happen in one place. Two things can trigger
   that swap: the OS, via `@media (prefers-color-scheme: dark)` on `:root`
   (the CSS-only approach used elsewhere in `~/Web/` repos); or an explicit
   `data-theme="light" | "dark"` attribute, which wins over the OS in
   either direction. Storybook's toolbar "Theme" global (`.storybook/preview.tsx`)
-  sets that attribute on a wrapper div around every story, so it previews
-  dark mode for the whole canvas without touching the OS setting.
-  `ThemedCard` additionally reads the raw `--color-neutral-*` scale
-  directly off that same `data-theme` attribute (rather than the semantic
-  tokens everything else uses) — a self-contained demo of a `globalTypes`
+  sets that attribute on a wrapper div around every story — and mirrors it
+  onto `document.body` via a `useEffect`, since `Modal` renders through
+  `createPortal(..., document.body)` and would otherwise sit outside the
+  wrapper div's DOM subtree, unreached by CSS custom-property inheritance
+  — so the toolbar previews dark mode for the whole canvas without
+  touching the OS setting. `ThemedCard` additionally reads the raw
+  `--color-neutral-*` scale directly off that same `data-theme` attribute
+  (rather than the semantic tokens everything else uses) — a
+  self-contained demo of a `globalTypes`
   toolbar control driving a component through a decorator, independent of
   (and composable with) the built-in Backgrounds addon.
 - **Vitest addon**: `@storybook/addon-vitest` runs every `.stories.tsx`

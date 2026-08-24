@@ -12,12 +12,10 @@
   --color-primary: #6355ff;
   --color-primary-hover: #4f3de0;
   --color-success: #10b981;
-  --color-success-hover: #059669;
   --color-danger: #f43f5e;
   --color-danger-hover: #e11d48;
 
   --color-neutral-0: #ffffff;
-  --color-neutral-50: #f8fafc;
   --color-neutral-100: #f1f5f9;
   --color-neutral-200: #e2e8f0;
   --color-neutral-300: #cbd5e1;
@@ -38,6 +36,7 @@
   --surface: var(--color-neutral-0);
   --surface-hover: var(--color-neutral-100);
   --border: var(--color-neutral-200);
+  --border-subtle: var(--color-neutral-100);
   --border-strong: var(--color-neutral-300);
   --text: var(--color-neutral-700);
   --text-muted: var(--color-neutral-500);
@@ -48,6 +47,7 @@
     --surface: var(--color-neutral-800);
     --surface-hover: var(--color-neutral-700);
     --border: var(--color-neutral-700);
+    --border-subtle: var(--color-neutral-700);
     --border-strong: var(--color-neutral-600);
     --text: var(--color-neutral-100);
     --text-muted: var(--color-neutral-400);
@@ -66,6 +66,7 @@
   --surface: var(--color-neutral-0);
   --surface-hover: var(--color-neutral-100);
   --border: var(--color-neutral-200);
+  --border-subtle: var(--color-neutral-100);
   --border-strong: var(--color-neutral-300);
   --text: var(--color-neutral-700);
   --text-muted: var(--color-neutral-500);
@@ -75,6 +76,7 @@
   --surface: var(--color-neutral-800);
   --surface-hover: var(--color-neutral-700);
   --border: var(--color-neutral-700);
+  --border-subtle: var(--color-neutral-700);
   --border-strong: var(--color-neutral-600);
   --text: var(--color-neutral-100);
   --text-muted: var(--color-neutral-400);

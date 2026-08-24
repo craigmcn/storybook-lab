@@ -15,7 +15,7 @@
 
 .data-table td {
   padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--surface-hover);
+  border-bottom: 1px solid var(--border-subtle);
   color: var(--text);
 }
 

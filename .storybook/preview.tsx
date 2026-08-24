@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
 
@@ -10,9 +11,22 @@ import "../src/index.css";
  * --color-neutral-* scale directly off the same attribute, as a
  * self-contained demo of a component consuming a custom global — see
  * `src/components/ThemedCard.css`.
+ *
+ * Also mirrors the attribute onto `document.body`: `Modal` renders via
+ * `createPortal(..., document.body)`, so its DOM node is a sibling of this
+ * wrapper div, not a descendant — CSS custom-property inheritance wouldn't
+ * otherwise reach it.
  */
-const withTheme: Decorator = (Story, context) => {
+const WithTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme ?? "light";
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+    return () => {
+      delete document.body.dataset.theme;
+    };
+  }, [theme]);
+
   return (
     <div data-theme={theme} style={{ padding: "1rem" }}>
       <Story />
@@ -63,7 +77,7 @@ const preview: Preview = {
     theme: "light",
   },
 
-  decorators: [withTheme],
+  decorators: [WithTheme],
 };
 
 export default preview;
