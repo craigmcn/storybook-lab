@@ -1,14 +1,96 @@
 :root {
   color-scheme: light dark;
   font-family:
+    "Inter",
+    ui-sans-serif,
     system-ui,
     -apple-system,
     "Segoe UI",
     sans-serif;
+
+  /* Design tokens — modern, vibrant accent palette over a cool slate neutral scale. */
+  --color-primary: #6355ff;
+  --color-primary-hover: #4f3de0;
+  --color-success: #10b981;
+  --color-danger: #f43f5e;
+  --color-danger-hover: #e11d48;
+
+  --color-neutral-0: #ffffff;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /*
+   * Semantic surface/text/border tokens — what components actually consume,
+   * so a dark-mode swap only has to happen in one place below. Kept separate
+   * from the raw --color-neutral-* scale (rather than redefining it directly)
+   * because ThemedCard's `data-theme` toggle reads that scale for its own,
+   * independent light/dark demo and must not shift with the OS preference.
+   */
+  --surface: var(--color-neutral-0);
+  --surface-hover: var(--color-neutral-100);
+  --border: var(--color-neutral-200);
+  --border-subtle: var(--color-neutral-100);
+  --border-strong: var(--color-neutral-300);
+  --text: var(--color-neutral-700);
+  --text-muted: var(--color-neutral-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: var(--color-neutral-800);
+    --surface-hover: var(--color-neutral-700);
+    --border: var(--color-neutral-700);
+    --border-subtle: var(--color-neutral-700);
+    --border-strong: var(--color-neutral-600);
+    --text: var(--color-neutral-100);
+    --text-muted: var(--color-neutral-400);
+  }
+}
+
+/*
+ * An explicit `data-theme` (e.g. Storybook's "Theme" toolbar global, wired
+ * up in .storybook/preview.tsx) overrides the OS preference above for
+ * everything inside it — not just ThemedCard, which reads the raw
+ * --color-neutral-* scale separately for its own demo of consuming a
+ * global directly. Custom properties set here win over the inherited
+ * :root/media-query values for any descendant, regardless of the OS theme.
+ */
+[data-theme="light"] {
+  --surface: var(--color-neutral-0);
+  --surface-hover: var(--color-neutral-100);
+  --border: var(--color-neutral-200);
+  --border-subtle: var(--color-neutral-100);
+  --border-strong: var(--color-neutral-300);
+  --text: var(--color-neutral-700);
+  --text-muted: var(--color-neutral-500);
+}
+
+[data-theme="dark"] {
+  --surface: var(--color-neutral-800);
+  --surface-hover: var(--color-neutral-700);
+  --border: var(--color-neutral-700);
+  --border-subtle: var(--color-neutral-700);
+  --border-strong: var(--color-neutral-600);
+  --text: var(--color-neutral-100);
+  --text-muted: var(--color-neutral-400);
+}
+
+[data-theme] {
+  background: var(--surface);
+  color: var(--text);
 }
 
 body {
   margin: 0;
+  background: var(--surface);
+  color: var(--text);
 }
 
 #app {

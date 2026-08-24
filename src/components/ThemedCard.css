@@ -1,8 +1,8 @@
 .themed-card {
-  --card-bg: #ffffff;
-  --card-border: #e4e7ec;
-  --card-text: #101828;
-  --card-muted: #667085;
+  --card-bg: var(--color-neutral-0);
+  --card-border: var(--color-neutral-200);
+  --card-text: var(--color-neutral-900);
+  --card-muted: var(--color-neutral-500);
 
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -17,10 +17,10 @@
 }
 
 [data-theme="dark"] .themed-card {
-  --card-bg: #1d2939;
-  --card-border: #344054;
-  --card-text: #f2f4f7;
-  --card-muted: #98a2b3;
+  --card-bg: var(--color-neutral-800);
+  --card-border: var(--color-neutral-700);
+  --card-text: var(--color-neutral-100);
+  --card-muted: var(--color-neutral-400);
 }
 
 .themed-card h3 {

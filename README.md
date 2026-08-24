@@ -8,7 +8,8 @@ args/controls, the actions addon, interaction testing (`play` functions),
 a custom global toolbar control for theming, portals + the viewport addon,
 the `loaders` API for async data, and CSS animation. See
 `src/Introduction.mdx` (rendered as the Storybook "Introduction" page) for
-the full breakdown.
+the full breakdown. New here? See [`doc/onboarding.md`](doc/onboarding.md)
+for a guided walkthrough.
 
 ## Development
 

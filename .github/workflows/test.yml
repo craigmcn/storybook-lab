@@ -31,8 +31,6 @@ jobs:
 
       - run: yarn build-storybook
 
-      - run: yarn test:coverage
-
       - name: Cache Playwright browsers
         id: playwright-cache
         uses: actions/cache@v6
@@ -47,5 +45,7 @@ jobs:
       - name: Install Playwright system dependencies
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: yarn playwright install-deps chromium
+
+      - run: yarn test:coverage
 
       - run: yarn test:e2e
